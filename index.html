@@ -1,0 +1,1231 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Origen Fotografía | Capturando tu esencia en Córdoba</title>
+    <meta name="description" content="Fotografía natural, cercana y moderna en Córdoba. Especialistas en bodas, prebodas y retratos. Inmortalizamos tus momentos sin poses forzadas.">
+    
+    <!-- Open Graph SEO -->
+    <meta property="og:title" content="Origen Fotografía | Bodas y Retratos en Córdoba">
+    <meta property="og:description" content="Fotografía natural y auténtica. Reserva tu sesión hoy.">
+    <meta property="og:type" content="website">
+
+    <!-- Google Fonts: Playfair Display (Elegancia/Headlines) & Lato (Modernidad/Lectura) -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+    <style>
+        /* ==========================================
+           VARIABLES Y RESET
+           ========================================== */
+        :root {
+            --primary: #2C2C2C; /* Carbón oscuro */
+            --secondary: #B8866B; /* Dorado tierra / Origen */
+            --bg-light: #F9F7F5; /* Beige muy suave */
+            --bg-white: #FFFFFF;
+            --text-main: #333333;
+            --text-muted: #666666;
+            --font-heading: 'Playfair Display', serif;
+            --font-body: 'Lato', sans-serif;
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            color: var(--text-main);
+            background-color: var(--bg-light);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        /* ==========================================
+           UTILIDADES Y COMPONENTES
+           ========================================== */
+        .container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .text-center { text-align: center; }
+        
+        .section-title {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+
+        .section-subtitle {
+            color: var(--secondary);
+            font-size: 1.1rem;
+            margin-bottom: 50px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Botones */
+        .btn {
+            display: inline-block;
+            padding: 15px 30px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: var(--transition);
+            border: none;
+            font-size: 0.9rem;
+        }
+
+        .btn-primary {
+            background-color: var(--secondary);
+            color: var(--bg-white);
+        }
+
+        .btn-primary:hover {
+            background-color: #9a6f56;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(184, 134, 107, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--bg-white);
+            border: 2px solid var(--bg-white);
+        }
+
+        .btn-outline:hover {
+            background-color: var(--bg-white);
+            color: var(--primary);
+        }
+
+        /* Animaciones Scroll */
+        .animate-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .animate-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ==========================================
+           URGENCY BANNER & NAVBAR
+           ========================================== */
+        .urgency-banner {
+            background-color: var(--primary);
+            color: var(--bg-white);
+            text-align: center;
+            padding: 8px 15px;
+            font-size: 0.85rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .navbar {
+            position: fixed;
+            top: 0; /* JS ajustará esto según el banner */
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: var(--transition);
+            background: transparent;
+        }
+
+        .navbar.scrolled {
+            background: rgba(255, 255, 255, 0.95);
+            padding: 15px 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            backdrop-filter: blur(5px);
+        }
+
+        .navbar.scrolled .logo, .navbar.scrolled .nav-links a {
+            color: var(--primary);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: var(--bg-white);
+            letter-spacing: 2px;
+            transition: var(--transition);
+        }
+
+        .nav-links {
+            display: none; /* Mobile hidden */
+        }
+
+        .nav-links a {
+            color: var(--bg-white);
+            margin-left: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* ==========================================
+           HERO SECTION
+           ========================================== */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('fotobodabackground.png') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: var(--bg-white);
+            position: relative;
+            padding-top: 60px;
+        }
+
+        .hero-content {
+            max-width: 800px;
+            padding: 0 20px;
+        }
+
+        .hero h1 {
+            font-family: var(--font-heading);
+            font-size: 3rem;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .scroll-indicator {
+            position: absolute;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            animation: bounce 2s infinite;
+        }
+
+        .scroll-indicator svg {
+            width: 30px;
+            height: 30px;
+            fill: var(--bg-white);
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
+            40% { transform: translateY(-15px) translateX(-50%); }
+            60% { transform: translateY(-7px) translateX(-50%); }
+        }
+
+        /* Stats Bar */
+        .stats-bar {
+            background: var(--bg-white);
+            padding: 40px 0;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            position: relative;
+            z-index: 10;
+            margin-top: -50px;
+            border-radius: 8px;
+            max-width: 1000px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            text-align: center;
+            gap: 20px;
+        }
+
+        .stat-item h3 {
+            font-family: var(--font-heading);
+            font-size: 2.5rem;
+            color: var(--secondary);
+        }
+
+        .stat-item p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* ==========================================
+           PORTAFOLIO / GALERÍA
+           ========================================== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 15px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            cursor: pointer;
+            aspect-ratio: 4/5;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(44, 44, 44, 0.7);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .gallery-overlay span {
+            color: var(--bg-white);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            transform: translateY(20px);
+            transition: var(--transition);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            opacity: 1;
+        }
+
+        .gallery-item:hover .gallery-overlay span {
+            transform: translateY(0);
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 2000;
+            display: none;
+            align-items: center;
+            justify-content: center;
+        }
+        .lightbox.active { display: flex; }
+        .lightbox img { max-height: 90vh; max-width: 90vw; border-radius: 4px; }
+        .lightbox-close {
+            position: absolute;
+            top: 20px; right: 30px;
+            color: white; font-size: 40px; cursor: pointer;
+        }
+
+        /* ==========================================
+           SERVICIOS (Pricing)
+           ========================================== */
+        .services-bg {
+            background-color: var(--bg-white);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+            align-items: center;
+        }
+
+        .pricing-card {
+            background: var(--bg-light);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+            border: 1px solid #eaeaea;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .pricing-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+        }
+
+        .pricing-card.popular {
+            background: var(--primary);
+            color: var(--bg-white);
+            transform: scale(1);
+            border: none;
+        }
+        
+        .pricing-card.popular:hover {
+            transform: scale(1.02) translateY(-10px);
+        }
+
+        .badge {
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--secondary);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .pricing-card h3 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+        }
+
+        .pricing-card .price {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 20px;
+            color: var(--secondary);
+        }
+
+        .pricing-card.popular .price {
+            color: var(--bg-white);
+        }
+
+        .price-strike {
+            text-decoration: line-through;
+            font-size: 1.2rem;
+            color: #999;
+            margin-right: 10px;
+        }
+
+        .pricing-features {
+            list-style: none;
+            margin-bottom: 30px;
+            text-align: left;
+        }
+
+        .pricing-features li {
+            margin-bottom: 15px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 0.95rem;
+        }
+
+        .pricing-features li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--secondary);
+            font-weight: bold;
+        }
+
+        /* ==========================================
+           PROCESO Y GARANTÍA
+           ========================================== */
+        .process-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+
+        .process-step {
+            text-align: center;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: var(--secondary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-family: var(--font-heading);
+            margin: 0 auto 20px;
+        }
+
+        .process-step h4 {
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+        }
+
+        .guarantee-box {
+            background: var(--bg-white);
+            border-left: 4px solid var(--secondary);
+            padding: 30px;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .guarantee-box svg {
+            width: 50px;
+            height: 50px;
+            fill: var(--secondary);
+            flex-shrink: 0;
+        }
+
+        /* ==========================================
+           TESTIMONIOS
+           ========================================== */
+        .testimonials-bg {
+            background-color: var(--primary);
+            color: var(--bg-white);
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: rgba(255,255,255,0.05);
+            padding: 40px 30px;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .stars {
+            color: #FFD700;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+
+        .quote {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-style: italic;
+            margin-bottom: 20px;
+            line-height: 1.8;
+        }
+
+        .client-info {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .client-info img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        /* ==========================================
+           FAQ (Acordeón)
+           ========================================== */
+        .faq-container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .faq-item {
+            border-bottom: 1px solid #ddd;
+            padding: 20px 0;
+        }
+
+        .faq-question {
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            color: var(--primary);
+        }
+
+        .faq-answer {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease;
+            color: var(--text-muted);
+            margin-top: 0;
+        }
+
+        .faq-item.active .faq-answer {
+            max-height: 200px;
+            margin-top: 15px;
+        }
+
+        .faq-item.active .faq-question::after {
+            content: '−';
+        }
+        .faq-question::after {
+            content: '+';
+            font-size: 1.5rem;
+            color: var(--secondary);
+        }
+
+        /* ==========================================
+           CONTACTO
+           ========================================== */
+        .contact-section {
+            background-color: var(--bg-white);
+        }
+
+        .contact-wrapper {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 50px;
+        }
+
+        .contact-info h3 {
+            font-family: var(--font-heading);
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .contact-info p {
+            margin-bottom: 30px;
+            color: var(--text-muted);
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+
+        .contact-method svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--secondary);
+        }
+
+        .contact-form {
+            background: var(--bg-light);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--font-body);
+            font-size: 1rem;
+            background: var(--bg-white);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--secondary);
+        }
+
+        .form-submit {
+            width: 100%;
+            border: none;
+        }
+
+        #form-message {
+            display: none;
+            padding: 15px;
+            background: #d4edda;
+            color: #155724;
+            border-radius: 4px;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        /* ==========================================
+           FOOTER & WHATSAPP FLOTANTE
+           ========================================== */
+        footer {
+            background: var(--primary);
+            color: var(--bg-white);
+            padding: 60px 0 20px;
+            text-align: center;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin: 20px 0;
+        }
+
+        .social-links a svg {
+            width: 24px;
+            height: 24px;
+            fill: var(--bg-white);
+            transition: var(--transition);
+        }
+
+        .social-links a:hover svg {
+            fill: var(--secondary);
+        }
+
+        .whatsapp-float {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #25d366;
+            color: white;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            z-index: 1000;
+            transition: var(--transition);
+        }
+
+        .whatsapp-float:hover {
+            transform: scale(1.1);
+            background-color: #1ebe57;
+        }
+
+        .whatsapp-float svg {
+            width: 35px;
+            height: 35px;
+            fill: white;
+        }
+
+        /* ==========================================
+           MEDIA QUERIES (Responsive)
+           ========================================== */
+        @media (min-width: 768px) {
+            .nav-links { display: flex; }
+            .hero h1 { font-size: 4rem; }
+            .pricing-grid { grid-template-columns: repeat(3, 1fr); }
+            .pricing-card.popular { transform: scale(1.05); }
+            .process-grid { grid-template-columns: repeat(4, 1fr); }
+            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
+            .contact-wrapper { grid-template-columns: 1fr 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Urgency Banner -->
+    <div class="urgency-banner" id="urgency-banner">
+        Agenda limitada para <span id="current-month">este mes</span> — Solo 3 plazas disponibles para bodas.
+    </div>
+
+    <!-- Navegación -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="#" class="logo">ORIGEN</a>
+            <div class="nav-links">
+                <a href="#portafolio">Portafolio</a>
+                <a href="#servicios">Servicios</a>
+                <a href="#testimonios">Testimonios</a>
+                <a href="#contacto">Contacto</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="hero-content animate-up">
+            <h1>Fotografía natural y auténtica con alma.</h1>
+            <p>Inmortalizamos tus momentos más importantes en Córdoba sin poses forzadas. Bodas, prebodas y retratos que cuentan tu verdadera historia.</p>
+            <div class="hero-buttons">
+                <a href="#contacto" class="btn btn-primary">Reservar mi fecha</a>
+                <a href="#portafolio" class="btn btn-outline">Ver mi trabajo</a>
+            </div>
+        </div>
+        <div class="scroll-indicator">
+            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+        </div>
+    </header>
+
+    <!-- Social Proof Stats -->
+    <div class="container">
+        <div class="stats-bar animate-up">
+            <div class="stats-grid">
+                <div class="stat-item">
+                    <h3 data-target="150">0</h3>
+                    <p>Bodas Inmortalizadas</p>
+                </div>
+                <div class="stat-item">
+                    <h3 data-target="5">0</h3>
+                    <p>Años de Experiencia</p>
+                </div>
+                <div class="stat-item">
+                    <h3>100%</h3>
+                    <p>Clientes Satisfechos</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Galería / Portafolio -->
+    <section id="portafolio" class="section-padding">
+        <div class="container">
+            <div class="text-center animate-up">
+                <h2 class="section-title">Historias Reales</h2>
+                <p class="section-subtitle">Un vistazo a nuestro trabajo</p>
+            </div>
+            
+            <div class="gallery-grid animate-up">
+                <!-- Usando placeholders de alta calidad simulando bodas/parejas -->
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda1/600/800" loading="lazy" alt="Boda 1"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/pareja2/600/800" loading="lazy" alt="Preboda"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda3/600/800" loading="lazy" alt="Detalles"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/moto4/600/800" loading="lazy" alt="Retrato Moto"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda5/600/800" loading="lazy" alt="Boda 2"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/pareja6/600/800" loading="lazy" alt="Postboda"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda7/600/800" loading="lazy" alt="Ceremonia"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/retrato8/600/800" loading="lazy" alt="Retrato"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda9/600/800" loading="lazy" alt="Fiesta"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+            </div>
+            
+            <div class="text-center" style="margin-top: 40px;">
+                <a href="https://www.instagram.com/origen_fotografia/" target="_blank" class="btn btn-primary">Ver más en Instagram</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox(event)">
+        <span class="lightbox-close">&times;</span>
+        <img id="lightbox-img" src="" alt="Imagen ampliada">
+    </div>
+
+    <!-- Servicios y Precios -->
+    <section id="servicios" class="section-padding services-bg">
+        <div class="container">
+            <div class="text-center animate-up">
+                <h2 class="section-title">Inversión en tus Recuerdos</h2>
+                <p class="section-subtitle">Transparencia desde el primer momento</p>
+            </div>
+
+            <div class="pricing-grid animate-up">
+                <!-- Card 1 -->
+                <div class="pricing-card">
+                    <h3>Sesión Pre-boda</h3>
+                    <div class="price">250 €</div>
+                    <ul class="pricing-features">
+                        <li>Ideal para perder el miedo a la cámara</li>
+                        <li>Localización en exteriores a elegir</li>
+                        <li>Fotos editadas en alta calidad</li>
+                        <li>Ambiente relajado y divertido</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Me interesa</a>
+                </div>
+
+                <!-- Card 2 (Destacada / Ancla) -->
+                <div class="pricing-card popular">
+                    <div class="badge">Pack Más Solicitado</div>
+                    <h3>Pack Completo Boda</h3>
+                    <div class="price"><span class="price-strike">2550 €</span> 2280 €</div>
+                    <ul class="pricing-features">
+                        <li><strong>Preparativos + Fotografía + Vídeo</strong></li>
+                        <li>Cobertura total (preparativos hasta 1.5h fiesta)</li>
+                        <li>1000-3000 fotos editadas en alta calidad</li>
+                        <li>Película de boda + tráiler resumen</li>
+                        <li>Grabación multicámara y audio profesional</li>
+                        <li>Caja personalizada con pendrive</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-outline" style="width: 100%; border-color: var(--secondary); background: var(--secondary);">Reservar mi fecha</a>
+                </div>
+
+                <!-- Card 3 -->
+                <div class="pricing-card">
+                    <h3>Fotografía de Boda</h3>
+                    <div class="price">1090 €</div>
+                    <ul class="pricing-features">
+                        <li>Cobertura desde ceremonia hasta fiesta</li>
+                        <li>Todas las fotografías editadas</li>
+                        <li>Pendrive personalizado</li>
+                        <li>Nube digital para compartir con invitados</li>
+                    </ul>
+                    <a href="#contacto" class="btn btn-primary" style="width: 100%;">Me interesa</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Proceso y Garantía -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center animate-up">
+                <h2 class="section-title">Cómo Trabajamos</h2>
+                <p class="section-subtitle">Sin complicaciones, sin sorpresas</p>
+            </div>
+
+            <div class="process-grid animate-up">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Nos Conocemos</h4>
+                    <p>Hablamos de vuestra idea, gustos y planificamos los detalles.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>La Sesión</h4>
+                    <p>Cero poses forzadas. Solo disfrutad del momento, nosotros capturamos la magia.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Edición</h4>
+                    <p>Seleccionamos y editamos cada foto con mimo para resaltar su esencia.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Entrega</h4>
+                    <p>Revivís vuestro día a través de una galería digital y formato físico.</p>
+                </div>
+            </div>
+
+            <div class="guarantee-box animate-up">
+                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <div>
+                    <h4 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 5px;">Garantía de Satisfacción y Confianza</h4>
+                    <p>Nuestro objetivo es que os emocionéis al ver el resultado. Trabajamos con contrato para vuestra total tranquilidad y aseguramos copias de seguridad de todo el material.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonios -->
+    <section id="testimonios" class="section-padding testimonials-bg">
+        <div class="container">
+            <div class="text-center animate-up">
+                <h2 class="section-title" style="color: white;">Lo que dicen de nosotros</h2>
+                <p class="section-subtitle" style="color: #ddd;">Historias de clientes reales</p>
+            </div>
+
+            <div class="testimonials-grid animate-up">
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Nos hicieron sentir súper cómodos desde el minuto uno. Las fotos de nuestra boda son espectaculares, captaron momentos que ni sabíamos que habían ocurrido."</p>
+                    <div class="client-info">
+                        <img src="https://picsum.photos/seed/user1/100/100" alt="Laura y Carlos">
+                        <div>
+                            <strong>Laura & Carlos</strong><br>
+                            <span style="font-size: 0.8rem; color: #aaa;">Boda en Córdoba</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Contratamos el pack de foto y vídeo y fue la mejor decisión. El trato es súper cercano y el resultado final parece de película. 100% recomendables."</p>
+                    <div class="client-info">
+                        <img src="https://picsum.photos/seed/user2/100/100" alt="Marta y Jose">
+                        <div>
+                            <strong>Marta & Jose</strong><br>
+                            <span style="font-size: 0.8rem; color: #aaa;">Pack Completo</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="stars">★★★★★</div>
+                    <p class="quote">"Hicimos una sesión de fotos con nuestras motos y el resultado fue brutal. Tienen un ojo increíble para la luz y los detalles. Repetiremos seguro."</p>
+                    <div class="client-info">
+                        <img src="https://picsum.photos/seed/user3/100/100" alt="David">
+                        <div>
+                            <strong>David M.</strong><br>
+                            <span style="font-size: 0.8rem; color: #aaa;">Sesión de Retrato/Motor</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section-padding">
+        <div class="container">
+            <div class="text-center animate-up">
+                <h2 class="section-title">Preguntas Frecuentes</h2>
+                <p class="section-subtitle">Resolvemos tus dudas</p>
+            </div>
+
+            <div class="faq-container animate-up">
+                <div class="faq-item">
+                    <div class="faq-question">¿Os desplazáis fuera de Córdoba?</div>
+                    <div class="faq-answer">Sí, operamos principalmente en Córdoba pero nos encanta viajar. Cuéntanos dónde es tu evento y te informaremos sobre los gastos de desplazamiento si los hubiera.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Cuánto tiempo tardáis en entregar el reportaje?</div>
+                    <div class="faq-answer">Sabemos que estáis deseando ver las fotos. Normalmente entregamos un pequeño adelanto en la primera semana, y el reportaje completo editado en un plazo máximo de 4 a 6 semanas.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Entregáis las fotos sin editar (archivos RAW)?</div>
+                    <div class="faq-answer">Nuestro trabajo y estilo se define en gran parte por nuestra edición. Por ello, entregamos las fotografías en formato JPG en alta resolución ya editadas. Sin embargo, en el servicio de vídeo sí ofrecemos la opción de adquirir los archivos brutos como extra.</div>
+                </div>
+                <div class="faq-item">
+                    <div class="faq-question">¿Cómo reservamos nuestra fecha?</div>
+                    <div class="faq-answer">Para bloquear la fecha en nuestra agenda, firmamos un contrato donde queda todo detallado y solicitamos una señal a modo de reserva. El resto se abona en plazos cómodos antes del evento.</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contacto -->
+    <section id="contacto" class="section-padding contact-section">
+        <div class="container contact-wrapper">
+            <div class="contact-info animate-up">
+                <h3>Hablemos de tu historia</h3>
+                <p>¿Te casas? ¿Quieres una sesión diferente? Escríbenos sin compromiso. Rellena el formulario o contáctanos directamente por WhatsApp para una respuesta más rápida.</p>
+                
+                <div class="contact-method">
+                    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
+                    <span>+34 697 75 54 54</span>
+                </div>
+                <div class="contact-method">
+                    <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    <a href="https://www.instagram.com/origen_fotografia/" target="_blank">@Origen_fotografia</a>
+                </div>
+            </div>
+
+            <div class="contact-form animate-up">
+                <form id="lead-form" onsubmit="submitForm(event)">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Tu Nombre" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="Tu Email" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="tel" class="form-control" placeholder="Teléfono / WhatsApp" required>
+                    </div>
+                    <div class="form-group">
+                        <select class="form-control" required>
+                            <option value="" disabled selected>¿Qué servicio te interesa?</option>
+                            <option value="boda_pack">Pack Completo Boda (Foto + Vídeo)</option>
+                            <option value="boda_foto">Solo Fotografía de Boda</option>
+                            <option value="preboda">Sesión Pre-boda / Post-boda</option>
+                            <option value="retrato">Sesión de Retrato / Motor</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="date" class="form-control" placeholder="Fecha aproximada (opcional)">
+                    </div>
+                    <div class="form-group">
+                        <textarea class="form-control" rows="4" placeholder="Cuéntanos un poco sobre tu idea..." required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-primary form-submit">Solicitar presupuesto gratis</button>
+                    <div id="form-message">¡Gracias! Hemos recibido tu mensaje. Te contactaremos muy pronto.</div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <h2 style="font-family: var(--font-heading); letter-spacing: 2px; margin-bottom: 10px;">ORIGEN</h2>
+            <p style="color: #aaa; font-size: 0.9rem;">Fotografía con alma en Córdoba</p>
+            
+            <div class="social-links">
+                <a href="https://www.instagram.com/origen_fotografia/" target="_blank" aria-label="Instagram">
+                    <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                </a>
+            </div>
+            
+            <p style="font-size: 0.8rem; color: #777;">&copy; <span id="year"></span> Origen Fotografía. Todos los derechos reservados.</p>
+        </div>
+    </footer>
+
+    <!-- Botón Flotante WhatsApp -->
+    <a href="https://wa.me/34697755454?text=Hola,%20vengo%20de%20la%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.93 9.91-.01 1.75.46 3.46 1.34 4.96L2 22l5.25-1.38c1.45.8 3.08 1.22 4.78 1.22 5.46 0 9.91-4.45 9.93-9.91C21.98 6.47 17.52 2 12.04 2m5.46 14.1c-.23.64-1.31 1.23-1.83 1.32-.47.08-1.07.13-3.05-.69-2.38-.99-3.92-3.41-4.04-3.57-.11-.16-.96-1.28-.96-2.44s.61-1.74.83-1.98c.22-.24.48-.3.64-.3h.48c.16 0 .38-.06.59.43.21.5.72 1.76.78 1.88.06.12.11.27.03.43-.08.16-.12.26-.24.4-.12.14-.25.31-.36.43-.12.13-.25.27-.11.51.14.24.63 1.04 1.35 1.68.93.83 1.71 1.09 1.95 1.21.24.12.38.1.52-.06.14-.16.61-.71.77-.95.16-.24.32-.2.54-.12.22.08 1.39.66 1.63.78.24.12.4.18.46.28.06.1.06.58-.17 1.22"/></svg>
+    </a>
+
+    <!-- Scripts -->
+    <script>
+        // 1. Configurar mes actual en el banner de urgencia
+        const meses = ['Enero', 'Febrero', 'Marzo', 'Abril', 'Mayo', 'Junio', 'Julio', 'Agosto', 'Septiembre', 'Octubre', 'Noviembre', 'Diciembre'];
+        document.getElementById('current-month').textContent = meses[new Date().getMonth()];
+        document.getElementById('year').textContent = new Date().getFullYear();
+
+        // 2. Navbar Sticky y cambio de color
+        const navbar = document.getElementById('navbar');
+        const bannerHeight = document.getElementById('urgency-banner').offsetHeight;
+        
+        // Ajustar top del navbar según el banner
+        navbar.style.top = bannerHeight + 'px';
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+                navbar.style.top = '0';
+            } else {
+                navbar.classList.remove('scrolled');
+                navbar.style.top = bannerHeight + 'px';
+            }
+        });
+
+        // 3. Animaciones al hacer scroll (Intersection Observer)
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    
+                    // Si es la barra de stats, animar números
+                    if(entry.target.classList.contains('stats-bar')) {
+                        animateNumbers();
+                    }
+                    
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.animate-up').forEach(el => {
+            observer.observe(el);
+        });
+
+        // 4. Animación de números (Stats)
+        let numbersAnimated = false;
+        function animateNumbers() {
+            if(numbersAnimated) return;
+            numbersAnimated = true;
+            
+            const counters = document.querySelectorAll('.stat-item h3[data-target]');
+            const speed = 200; // Menor es más rápido
+
+            counters.forEach(counter => {
+                const updateCount = () => {
+                    const target = +counter.getAttribute('data-target');
+                    const count = +counter.innerText.replace('+', '');
+                    const inc = target / speed;
+
+                    if (count < target) {
+                        counter.innerText = Math.ceil(count + inc) + (target > 100 ? '+' : '');
+                        setTimeout(updateCount, 15);
+                    } else {
+                        counter.innerText = target + (target > 100 ? '+' : '');
+                    }
+                };
+                updateCount();
+            });
+        }
+
+        // 5. Lightbox para la galería
+        const lightbox = document.getElementById('lightbox');
+        const lightboxImg = document.getElementById('lightbox-img');
+
+        function openLightbox(element) {
+            const imgSrc = element.querySelector('img').src;
+            lightboxImg.src = imgSrc;
+            lightbox.classList.add('active');
+            document.body.style.overflow = 'hidden'; // Prevenir scroll
+        }
+
+        function closeLightbox(e) {
+            if (e.target === lightbox || e.target.classList.contains('lightbox-close')) {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = 'auto';
+            }
+        }
+
+        // 6. Acordeón FAQ
+        const faqItems = document.querySelectorAll('.faq-item');
+        faqItems.forEach(item => {
+            const question = item.querySelector('.faq-question');
+            question.addEventListener('click', () => {
+                // Cerrar los demás
+                faqItems.forEach(otherItem => {
+                    if (otherItem !== item) {
+                        otherItem.classList.remove('active');
+                    }
+                });
+                // Alternar el actual
+                item.classList.toggle('active');
+            });
+        });
+
+        // 7. Simulación de envío de formulario
+        function submitForm(e) {
+            e.preventDefault();
+            const btn = e.target.querySelector('button');
+            const msg = document.getElementById('form-message');
+            
+            btn.textContent = 'Enviando...';
+            btn.disabled = true;
+
+            // Simular petición AJAX
+            setTimeout(() => {
+                e.target.reset();
+                btn.textContent = 'Solicitar presupuesto gratis';
+                btn.disabled = false;
+                msg.style.display = 'block';
+                
+                setTimeout(() => {
+                    msg.style.display = 'none';
+                }, 5000);
+            }, 1500);
+        }
+    </script>
+</body>
+</html>
