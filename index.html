@@ -88,7 +88,7 @@
 
         .section-title {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--primary);
             margin-bottom: 10px;
         }
@@ -200,22 +200,73 @@
             transition: var(--transition);
         }
 
+        .nav-toggle {
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            width: 30px;
+            height: 21px;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+
+        .nav-toggle span {
+            width: 100%;
+            height: 3px;
+            background-color: var(--bg-white);
+            border-radius: 10px;
+            transition: var(--transition);
+        }
+
+        .navbar.scrolled .nav-toggle span {
+            background-color: var(--primary);
+        }
+
+        .nav-toggle.active span:nth-child(1) {
+            transform: translateY(9px) rotate(45deg);
+        }
+
+        .nav-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .nav-toggle.active span:nth-child(3) {
+            transform: translateY(-9px) rotate(-45deg);
+        }
+
         .nav-links {
-            display: none;
-            /* Mobile hidden */
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 80%;
+            height: 100vh;
+            background-color: var(--primary);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            z-index: 1000;
+            box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-links.active {
+            right: 0;
         }
 
         .nav-links a {
-            color: var(--bg-white);
-            margin-left: 30px;
-            font-size: 0.9rem;
+            color: var(--bg-white) !important;
+            margin: 20px 0;
+            font-size: 1.2rem;
             font-weight: 700;
             text-transform: uppercase;
             transition: var(--transition);
         }
 
         .nav-links a:hover {
-            color: var(--secondary);
+            color: var(--secondary) !important;
         }
 
         /* ==========================================
@@ -240,7 +291,7 @@
 
         .hero h1 {
             font-family: var(--font-heading);
-            font-size: 3rem;
+            font-size: 2.2rem;
             margin-bottom: 20px;
             line-height: 1.2;
         }
@@ -307,14 +358,14 @@
 
         .stats-grid {
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
+            grid-template-columns: 1fr;
             text-align: center;
             gap: 20px;
         }
 
         .stat-item h3 {
             font-family: var(--font-heading);
-            font-size: 2.5rem;
+            font-size: 2rem;
             color: var(--secondary);
         }
 
@@ -794,12 +845,42 @@
            MEDIA QUERIES (Responsive)
            ========================================== */
         @media (min-width: 768px) {
+            .nav-toggle {
+                display: none;
+            }
+
             .nav-links {
+                position: static;
+                width: auto;
+                height: auto;
+                background-color: transparent;
+                flex-direction: row;
                 display: flex;
+                box-shadow: none;
+            }
+
+            .nav-links a {
+                color: var(--bg-white) !important;
+                margin-left: 30px;
+                margin-top: 0;
+                margin-bottom: 0;
+                font-size: 0.9rem;
+            }
+
+            .navbar.scrolled .nav-links a {
+                color: var(--primary) !important;
             }
 
             .hero h1 {
                 font-size: 4rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+
+            .stats-grid {
+                grid-template-columns: repeat(3, 1fr);
             }
 
             .pricing-grid {
@@ -836,7 +917,12 @@
     <nav class="navbar" id="navbar">
         <div class="container nav-container">
             <a href="#" class="logo">ORIGEN</a>
-            <div class="nav-links">
+            <button class="nav-toggle" id="nav-toggle" aria-label="Abrir menú">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
                 <a href="#portafolio">Portafolio</a>
                 <a href="#servicios">Servicios</a>
                 <a href="#testimonios">Testimonios</a>
@@ -915,18 +1001,6 @@
                 </div>
                 <div class="gallery-item" onclick="openLightbox(this)"><img
                         src="https://picsum.photos/seed/pareja6/600/800" loading="lazy" alt="Postboda">
-                    <div class="gallery-overlay"><span>Ver Foto</span></div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img
-                        src="https://picsum.photos/seed/boda7/600/800" loading="lazy" alt="Ceremonia">
-                    <div class="gallery-overlay"><span>Ver Foto</span></div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img
-                        src="https://picsum.photos/seed/retrato8/600/800" loading="lazy" alt="Retrato">
-                    <div class="gallery-overlay"><span>Ver Foto</span></div>
-                </div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img
-                        src="https://picsum.photos/seed/boda9/600/800" loading="lazy" alt="Fiesta">
                     <div class="gallery-overlay"><span>Ver Foto</span></div>
                 </div>
             </div>
@@ -1313,7 +1387,27 @@
             }
         }
 
-        // 6. Acordeón FAQ
+        // 6. Menú Móvil Toggle
+        const navToggle = document.getElementById('nav-toggle');
+        const navLinks = document.getElementById('nav-links');
+        const navLinksItems = document.querySelectorAll('.nav-links a');
+
+        if (navToggle && navLinks) {
+            navToggle.addEventListener('click', () => {
+                navToggle.classList.toggle('active');
+                navLinks.classList.toggle('active');
+            });
+
+            // Cerrar menú al hacer clic en un enlace
+            navLinksItems.forEach(item => {
+                item.addEventListener('click', () => {
+                    navToggle.classList.remove('active');
+                    navLinks.classList.remove('active');
+                });
+            });
+        }
+
+        // 7. Acordeón FAQ
         const faqItems = document.querySelectorAll('.faq-item');
         faqItems.forEach(item => {
             const question = item.querySelector('.faq-question');
