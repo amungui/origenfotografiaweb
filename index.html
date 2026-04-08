@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Origen Fotografía | Capturando tu esencia en Córdoba</title>
-    <meta name="description" content="Fotografía natural, cercana y moderna en Córdoba. Especialistas en bodas, prebodas y retratos. Inmortalizamos tus momentos sin poses forzadas.">
-    
+    <meta name="description"
+        content="Fotografía natural, cercana y moderna en Córdoba. Especialistas en bodas, prebodas y retratos. Inmortalizamos tus momentos sin poses forzadas.">
+
     <!-- Open Graph SEO -->
     <meta property="og:title" content="Origen Fotografía | Bodas y Retratos en Córdoba">
     <meta property="og:description" content="Fotografía natural y auténtica. Reserva tu sesión hoy.">
@@ -14,16 +16,21 @@
     <!-- Google Fonts: Playfair Display (Elegancia/Headlines) & Lato (Modernidad/Lectura) -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
 
     <style>
         /* ==========================================
            VARIABLES Y RESET
            ========================================== */
         :root {
-            --primary: #2C2C2C; /* Carbón oscuro */
-            --secondary: #B8866B; /* Dorado tierra / Origen */
-            --bg-light: #F9F7F5; /* Beige muy suave */
+            --primary: #2C2C2C;
+            /* Carbón oscuro */
+            --secondary: #B8866B;
+            /* Dorado tierra / Origen */
+            --bg-light: #F9F7F5;
+            /* Beige muy suave */
             --bg-white: #FFFFFF;
             --text-main: #333333;
             --text-muted: #666666;
@@ -75,8 +82,10 @@
             padding: 80px 0;
         }
 
-        .text-center { text-align: center; }
-        
+        .text-center {
+            text-align: center;
+        }
+
         .section-title {
             font-family: var(--font-heading);
             font-size: 2.5rem;
@@ -134,6 +143,7 @@
             transform: translateY(30px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
+
         .animate-up.visible {
             opacity: 1;
             transform: translateY(0);
@@ -154,7 +164,8 @@
 
         .navbar {
             position: fixed;
-            top: 0; /* JS ajustará esto según el banner */
+            top: 0;
+            /* JS ajustará esto según el banner */
             width: 100%;
             padding: 20px 0;
             z-index: 1000;
@@ -165,11 +176,12 @@
         .navbar.scrolled {
             background: rgba(255, 255, 255, 0.95);
             padding: 15px 0;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
             backdrop-filter: blur(5px);
         }
 
-        .navbar.scrolled .logo, .navbar.scrolled .nav-links a {
+        .navbar.scrolled .logo,
+        .navbar.scrolled .nav-links a {
             color: var(--primary);
         }
 
@@ -189,7 +201,8 @@
         }
 
         .nav-links {
-            display: none; /* Mobile hidden */
+            display: none;
+            /* Mobile hidden */
         }
 
         .nav-links a {
@@ -210,7 +223,7 @@
            ========================================== */
         .hero {
             height: 100vh;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url('fotobodabackground.png') center/cover;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6)), url('fotobodabackground.png') center/cover;
             display: flex;
             align-items: center;
             justify-content: center;
@@ -260,16 +273,29 @@
         }
 
         @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0) translateX(-50%); }
-            40% { transform: translateY(-15px) translateX(-50%); }
-            60% { transform: translateY(-7px) translateX(-50%); }
+
+            0%,
+            20%,
+            50%,
+            80%,
+            100% {
+                transform: translateY(0) translateX(-50%);
+            }
+
+            40% {
+                transform: translateY(-15px) translateX(-50%);
+            }
+
+            60% {
+                transform: translateY(-7px) translateX(-50%);
+            }
         }
 
         /* Stats Bar */
         .stats-bar {
             background: var(--bg-white);
             padding: 40px 0;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
             position: relative;
             z-index: 10;
             margin-top: -50px;
@@ -358,18 +384,30 @@
         .lightbox {
             position: fixed;
             inset: 0;
-            background: rgba(0,0,0,0.9);
+            background: rgba(0, 0, 0, 0.9);
             z-index: 2000;
             display: none;
             align-items: center;
             justify-content: center;
         }
-        .lightbox.active { display: flex; }
-        .lightbox img { max-height: 90vh; max-width: 90vw; border-radius: 4px; }
+
+        .lightbox.active {
+            display: flex;
+        }
+
+        .lightbox img {
+            max-height: 90vh;
+            max-width: 90vw;
+            border-radius: 4px;
+        }
+
         .lightbox-close {
             position: absolute;
-            top: 20px; right: 30px;
-            color: white; font-size: 40px; cursor: pointer;
+            top: 20px;
+            right: 30px;
+            color: white;
+            font-size: 40px;
+            cursor: pointer;
         }
 
         /* ==========================================
@@ -398,7 +436,7 @@
 
         .pricing-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08);
         }
 
         .pricing-card.popular {
@@ -407,7 +445,7 @@
             transform: scale(1);
             border: none;
         }
-        
+
         .pricing-card.popular:hover {
             transform: scale(1.02) translateY(-10px);
         }
@@ -512,7 +550,7 @@
             display: flex;
             align-items: center;
             gap: 20px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
             border-radius: 0 8px 8px 0;
         }
 
@@ -538,7 +576,7 @@
         }
 
         .testimonial-card {
-            background: rgba(255,255,255,0.05);
+            background: rgba(255, 255, 255, 0.05);
             padding: 40px 30px;
             border-radius: 8px;
             text-align: center;
@@ -611,6 +649,7 @@
         .faq-item.active .faq-question::after {
             content: '−';
         }
+
         .faq-question::after {
             content: '+';
             font-size: 1.5rem;
@@ -735,7 +774,7 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
             z-index: 1000;
             transition: var(--transition);
         }
@@ -755,16 +794,37 @@
            MEDIA QUERIES (Responsive)
            ========================================== */
         @media (min-width: 768px) {
-            .nav-links { display: flex; }
-            .hero h1 { font-size: 4rem; }
-            .pricing-grid { grid-template-columns: repeat(3, 1fr); }
-            .pricing-card.popular { transform: scale(1.05); }
-            .process-grid { grid-template-columns: repeat(4, 1fr); }
-            .testimonials-grid { grid-template-columns: repeat(3, 1fr); }
-            .contact-wrapper { grid-template-columns: 1fr 1fr; }
+            .nav-links {
+                display: flex;
+            }
+
+            .hero h1 {
+                font-size: 4rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .pricing-card.popular {
+                transform: scale(1.05);
+            }
+
+            .process-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .testimonials-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .contact-wrapper {
+                grid-template-columns: 1fr 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <!-- Urgency Banner -->
@@ -789,14 +849,17 @@
     <header class="hero">
         <div class="hero-content animate-up">
             <h1>Fotografía natural y auténtica con alma.</h1>
-            <p>Inmortalizamos tus momentos más importantes en Córdoba sin poses forzadas. Bodas, prebodas y retratos que cuentan tu verdadera historia.</p>
+            <p>Inmortalizamos tus momentos más importantes en Córdoba sin poses forzadas. Bodas, prebodas y retratos que
+                cuentan tu verdadera historia.</p>
             <div class="hero-buttons">
                 <a href="#contacto" class="btn btn-primary">Reservar mi fecha</a>
                 <a href="#portafolio" class="btn btn-outline">Ver mi trabajo</a>
             </div>
         </div>
         <div class="scroll-indicator">
-            <svg viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>
+            <svg viewBox="0 0 24 24">
+                <path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z" />
+            </svg>
         </div>
     </header>
 
@@ -827,22 +890,50 @@
                 <h2 class="section-title">Historias Reales</h2>
                 <p class="section-subtitle">Un vistazo a nuestro trabajo</p>
             </div>
-            
+
             <div class="gallery-grid animate-up">
                 <!-- Usando placeholders de alta calidad simulando bodas/parejas -->
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda1/600/800" loading="lazy" alt="Boda 1"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/pareja2/600/800" loading="lazy" alt="Preboda"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda3/600/800" loading="lazy" alt="Detalles"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/moto4/600/800" loading="lazy" alt="Retrato Moto"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda5/600/800" loading="lazy" alt="Boda 2"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/pareja6/600/800" loading="lazy" alt="Postboda"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda7/600/800" loading="lazy" alt="Ceremonia"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/retrato8/600/800" loading="lazy" alt="Retrato"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
-                <div class="gallery-item" onclick="openLightbox(this)"><img src="https://picsum.photos/seed/boda9/600/800" loading="lazy" alt="Fiesta"><div class="gallery-overlay"><span>Ver Foto</span></div></div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/boda1/600/800" loading="lazy" alt="Boda 1">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/pareja2/600/800" loading="lazy" alt="Preboda">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/boda3/600/800" loading="lazy" alt="Detalles">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/moto4/600/800" loading="lazy" alt="Retrato Moto">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/boda5/600/800" loading="lazy" alt="Boda 2">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/pareja6/600/800" loading="lazy" alt="Postboda">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/boda7/600/800" loading="lazy" alt="Ceremonia">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/retrato8/600/800" loading="lazy" alt="Retrato">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
+                <div class="gallery-item" onclick="openLightbox(this)"><img
+                        src="https://picsum.photos/seed/boda9/600/800" loading="lazy" alt="Fiesta">
+                    <div class="gallery-overlay"><span>Ver Foto</span></div>
+                </div>
             </div>
-            
+
             <div class="text-center" style="margin-top: 40px;">
-                <a href="https://www.instagram.com/origen_fotografia/" target="_blank" class="btn btn-primary">Ver más en Instagram</a>
+                <a href="https://www.instagram.com/origen_fotografia/" target="_blank" class="btn btn-primary">Ver más
+                    en Instagram</a>
             </div>
         </div>
     </section>
@@ -888,7 +979,9 @@
                         <li>Grabación multicámara y audio profesional</li>
                         <li>Caja personalizada con pendrive</li>
                     </ul>
-                    <a href="#contacto" class="btn btn-outline" style="width: 100%; border-color: var(--secondary); background: var(--secondary);">Reservar mi fecha</a>
+                    <a href="#contacto" class="btn btn-outline"
+                        style="width: 100%; border-color: var(--secondary); background: var(--secondary);">Reservar mi
+                        fecha</a>
                 </div>
 
                 <!-- Card 3 -->
@@ -939,10 +1032,15 @@
             </div>
 
             <div class="guarantee-box animate-up">
-                <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                <svg viewBox="0 0 24 24">
+                    <path
+                        d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                </svg>
                 <div>
-                    <h4 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 5px;">Garantía de Satisfacción y Confianza</h4>
-                    <p>Nuestro objetivo es que os emocionéis al ver el resultado. Trabajamos con contrato para vuestra total tranquilidad y aseguramos copias de seguridad de todo el material.</p>
+                    <h4 style="font-family: var(--font-heading); font-size: 1.3rem; margin-bottom: 5px;">Garantía de
+                        Satisfacción y Confianza</h4>
+                    <p>Nuestro objetivo es que os emocionéis al ver el resultado. Trabajamos con contrato para vuestra
+                        total tranquilidad y aseguramos copias de seguridad de todo el material.</p>
                 </div>
             </div>
         </div>
@@ -959,7 +1057,8 @@
             <div class="testimonials-grid animate-up">
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="quote">"Nos hicieron sentir súper cómodos desde el minuto uno. Las fotos de nuestra boda son espectaculares, captaron momentos que ni sabíamos que habían ocurrido."</p>
+                    <p class="quote">"Nos hicieron sentir súper cómodos desde el minuto uno. Las fotos de nuestra boda
+                        son espectaculares, captaron momentos que ni sabíamos que habían ocurrido."</p>
                     <div class="client-info">
                         <img src="https://picsum.photos/seed/user1/100/100" alt="Laura y Carlos">
                         <div>
@@ -970,7 +1069,8 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="quote">"Contratamos el pack de foto y vídeo y fue la mejor decisión. El trato es súper cercano y el resultado final parece de película. 100% recomendables."</p>
+                    <p class="quote">"Contratamos el pack de foto y vídeo y fue la mejor decisión. El trato es súper
+                        cercano y el resultado final parece de película. 100% recomendables."</p>
                     <div class="client-info">
                         <img src="https://picsum.photos/seed/user2/100/100" alt="Marta y Jose">
                         <div>
@@ -981,7 +1081,8 @@
                 </div>
                 <div class="testimonial-card">
                     <div class="stars">★★★★★</div>
-                    <p class="quote">"Hicimos una sesión de fotos con nuestras motos y el resultado fue brutal. Tienen un ojo increíble para la luz y los detalles. Repetiremos seguro."</p>
+                    <p class="quote">"Hicimos una sesión de fotos con nuestras motos y el resultado fue brutal. Tienen
+                        un ojo increíble para la luz y los detalles. Repetiremos seguro."</p>
                     <div class="client-info">
                         <img src="https://picsum.photos/seed/user3/100/100" alt="David">
                         <div>
@@ -1005,19 +1106,26 @@
             <div class="faq-container animate-up">
                 <div class="faq-item">
                     <div class="faq-question">¿Os desplazáis fuera de Córdoba?</div>
-                    <div class="faq-answer">Sí, operamos principalmente en Córdoba pero nos encanta viajar. Cuéntanos dónde es tu evento y te informaremos sobre los gastos de desplazamiento si los hubiera.</div>
+                    <div class="faq-answer">Sí, operamos principalmente en Córdoba pero nos encanta viajar. Cuéntanos
+                        dónde es tu evento y te informaremos sobre los gastos de desplazamiento si los hubiera.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Cuánto tiempo tardáis en entregar el reportaje?</div>
-                    <div class="faq-answer">Sabemos que estáis deseando ver las fotos. Normalmente entregamos un pequeño adelanto en la primera semana, y el reportaje completo editado en un plazo máximo de 4 a 6 semanas.</div>
+                    <div class="faq-answer">Sabemos que estáis deseando ver las fotos. Normalmente entregamos un pequeño
+                        adelanto en la primera semana, y el reportaje completo editado en un plazo máximo de 4 a 6
+                        semanas.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Entregáis las fotos sin editar (archivos RAW)?</div>
-                    <div class="faq-answer">Nuestro trabajo y estilo se define en gran parte por nuestra edición. Por ello, entregamos las fotografías en formato JPG en alta resolución ya editadas. Sin embargo, en el servicio de vídeo sí ofrecemos la opción de adquirir los archivos brutos como extra.</div>
+                    <div class="faq-answer">Nuestro trabajo y estilo se define en gran parte por nuestra edición. Por
+                        ello, entregamos las fotografías en formato JPG en alta resolución ya editadas. Sin embargo, en
+                        el servicio de vídeo sí ofrecemos la opción de adquirir los archivos brutos como extra.</div>
                 </div>
                 <div class="faq-item">
                     <div class="faq-question">¿Cómo reservamos nuestra fecha?</div>
-                    <div class="faq-answer">Para bloquear la fecha en nuestra agenda, firmamos un contrato donde queda todo detallado y solicitamos una señal a modo de reserva. El resto se abona en plazos cómodos antes del evento.</div>
+                    <div class="faq-answer">Para bloquear la fecha en nuestra agenda, firmamos un contrato donde queda
+                        todo detallado y solicitamos una señal a modo de reserva. El resto se abona en plazos cómodos
+                        antes del evento.</div>
                 </div>
             </div>
         </div>
@@ -1028,14 +1136,21 @@
         <div class="container contact-wrapper">
             <div class="contact-info animate-up">
                 <h3>Hablemos de tu historia</h3>
-                <p>¿Te casas? ¿Quieres una sesión diferente? Escríbenos sin compromiso. Rellena el formulario o contáctanos directamente por WhatsApp para una respuesta más rápida.</p>
-                
+                <p>¿Te casas? ¿Quieres una sesión diferente? Escríbenos sin compromiso. Rellena el formulario o
+                    contáctanos directamente por WhatsApp para una respuesta más rápida.</p>
+
                 <div class="contact-method">
-                    <svg viewBox="0 0 24 24"><path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z"/></svg>
-                    <span>+34 697 75 54 54</span>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56-.35-.12-.74-.03-1.01.24l-1.57 1.97c-2.83-1.35-5.48-3.9-6.89-6.83l1.95-1.66c.27-.28.35-.67.24-1.02-.37-1.11-.56-2.3-.56-3.53 0-.54-.45-.99-.99-.99H4.19C3.65 3 3 3.24 3 3.99 3 13.28 10.73 21 20.01 21c.71 0 .99-.63.99-1.18v-3.45c0-.54-.45-.99-.99-.99z" />
+                    </svg>
+                    <span>+34 600 000 000</span>
                 </div>
                 <div class="contact-method">
-                    <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+                    </svg>
                     <a href="https://www.instagram.com/origen_fotografia/" target="_blank">@Origen_fotografia</a>
                 </div>
             </div>
@@ -1065,7 +1180,8 @@
                         <input type="date" class="form-control" placeholder="Fecha aproximada (opcional)">
                     </div>
                     <div class="form-group">
-                        <textarea class="form-control" rows="4" placeholder="Cuéntanos un poco sobre tu idea..." required></textarea>
+                        <textarea class="form-control" rows="4" placeholder="Cuéntanos un poco sobre tu idea..."
+                            required></textarea>
                     </div>
                     <button type="submit" class="btn btn-primary form-submit">Solicitar presupuesto gratis</button>
                     <div id="form-message">¡Gracias! Hemos recibido tu mensaje. Te contactaremos muy pronto.</div>
@@ -1079,20 +1195,28 @@
         <div class="container">
             <h2 style="font-family: var(--font-heading); letter-spacing: 2px; margin-bottom: 10px;">ORIGEN</h2>
             <p style="color: #aaa; font-size: 0.9rem;">Fotografía con alma en Córdoba</p>
-            
+
             <div class="social-links">
                 <a href="https://www.instagram.com/origen_fotografia/" target="_blank" aria-label="Instagram">
-                    <svg viewBox="0 0 24 24"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg>
+                    <svg viewBox="0 0 24 24">
+                        <path
+                            d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2m-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6m9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25M12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5m0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z" />
+                    </svg>
                 </a>
             </div>
-            
-            <p style="font-size: 0.8rem; color: #777;">&copy; <span id="year"></span> Origen Fotografía. Todos los derechos reservados.</p>
+
+            <p style="font-size: 0.8rem; color: #777;">&copy; <span id="year"></span> Origen Fotografía. Todos los
+                derechos reservados.</p>
         </div>
     </footer>
 
     <!-- Botón Flotante WhatsApp -->
-    <a href="https://wa.me/34697755454?text=Hola,%20vengo%20de%20la%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n." class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
-        <svg viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.93 9.91-.01 1.75.46 3.46 1.34 4.96L2 22l5.25-1.38c1.45.8 3.08 1.22 4.78 1.22 5.46 0 9.91-4.45 9.93-9.91C21.98 6.47 17.52 2 12.04 2m5.46 14.1c-.23.64-1.31 1.23-1.83 1.32-.47.08-1.07.13-3.05-.69-2.38-.99-3.92-3.41-4.04-3.57-.11-.16-.96-1.28-.96-2.44s.61-1.74.83-1.98c.22-.24.48-.3.64-.3h.48c.16 0 .38-.06.59.43.21.5.72 1.76.78 1.88.06.12.11.27.03.43-.08.16-.12.26-.24.4-.12.14-.25.31-.36.43-.12.13-.25.27-.11.51.14.24.63 1.04 1.35 1.68.93.83 1.71 1.09 1.95 1.21.24.12.38.1.52-.06.14-.16.61-.71.77-.95.16-.24.32-.2.54-.12.22.08 1.39.66 1.63.78.24.12.4.18.46.28.06.1.06.58-.17 1.22"/></svg>
+    <a href="https://wa.me/34600000000?text=Hola,%20vengo%20de%20la%20web%20y%20me%20gustar%C3%ADa%20pedir%20informaci%C3%B3n."
+        class="whatsapp-float" target="_blank" aria-label="Contactar por WhatsApp">
+        <svg viewBox="0 0 24 24">
+            <path
+                d="M12.04 2c-5.46 0-9.91 4.45-9.93 9.91-.01 1.75.46 3.46 1.34 4.96L2 22l5.25-1.38c1.45.8 3.08 1.22 4.78 1.22 5.46 0 9.91-4.45 9.93-9.91C21.98 6.47 17.52 2 12.04 2m5.46 14.1c-.23.64-1.31 1.23-1.83 1.32-.47.08-1.07.13-3.05-.69-2.38-.99-3.92-3.41-4.04-3.57-.11-.16-.96-1.28-.96-2.44s.61-1.74.83-1.98c.22-.24.48-.3.64-.3h.48c.16 0 .38-.06.59.43.21.5.72 1.76.78 1.88.06.12.11.27.03.43-.08.16-.12.26-.24.4-.12.14-.25.31-.36.43-.12.13-.25.27-.11.51.14.24.63 1.04 1.35 1.68.93.83 1.71 1.09 1.95 1.21.24.12.38.1.52-.06.14-.16.61-.71.77-.95.16-.24.32-.2.54-.12.22.08 1.39.66 1.63.78.24.12.4.18.46.28.06.1.06.58-.17 1.22" />
+        </svg>
     </a>
 
     <!-- Scripts -->
@@ -1105,7 +1229,7 @@
         // 2. Navbar Sticky y cambio de color
         const navbar = document.getElementById('navbar');
         const bannerHeight = document.getElementById('urgency-banner').offsetHeight;
-        
+
         // Ajustar top del navbar según el banner
         navbar.style.top = bannerHeight + 'px';
 
@@ -1130,12 +1254,12 @@
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('visible');
-                    
+
                     // Si es la barra de stats, animar números
-                    if(entry.target.classList.contains('stats-bar')) {
+                    if (entry.target.classList.contains('stats-bar')) {
                         animateNumbers();
                     }
-                    
+
                     observer.unobserve(entry.target);
                 }
             });
@@ -1148,9 +1272,9 @@
         // 4. Animación de números (Stats)
         let numbersAnimated = false;
         function animateNumbers() {
-            if(numbersAnimated) return;
+            if (numbersAnimated) return;
             numbersAnimated = true;
-            
+
             const counters = document.querySelectorAll('.stat-item h3[data-target]');
             const speed = 200; // Menor es más rápido
 
@@ -1210,7 +1334,7 @@
             e.preventDefault();
             const btn = e.target.querySelector('button');
             const msg = document.getElementById('form-message');
-            
+
             btn.textContent = 'Enviando...';
             btn.disabled = true;
 
@@ -1220,7 +1344,7 @@
                 btn.textContent = 'Solicitar presupuesto gratis';
                 btn.disabled = false;
                 msg.style.display = 'block';
-                
+
                 setTimeout(() => {
                     msg.style.display = 'none';
                 }, 5000);
@@ -1228,4 +1352,5 @@
         }
     </script>
 </body>
+
 </html>
